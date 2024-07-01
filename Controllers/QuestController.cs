@@ -112,6 +112,8 @@ public class QuestController : ControllerBase
         if (!string.IsNullOrEmpty(entity.Name) && !string.IsNullOrWhiteSpace(entity.Name))
             query = query.Where(x => x.Name.Contains(entity.Name));
 
+        query = query.OrderBy(x => Guid.NewGuid());
+
         return await query.ToListAsync();
     }
 
